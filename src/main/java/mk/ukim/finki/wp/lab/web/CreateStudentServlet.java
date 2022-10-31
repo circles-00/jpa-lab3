@@ -1,8 +1,7 @@
 package mk.ukim.finki.wp.lab.web;
 
 import lombok.extern.slf4j.Slf4j;
-import mk.ukim.finki.wp.lab.model.Student;
-import mk.ukim.finki.wp.lab.repository.StudentRepository;
+import mk.ukim.finki.wp.lab.service.StudentService;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -18,11 +17,11 @@ import java.io.IOException;
 public class CreateStudentServlet extends HttpServlet {
 
     private SpringTemplateEngine springTemplateEngine;
-    private StudentRepository studentRepository;
+    private StudentService studentService;
 
-    public CreateStudentServlet(SpringTemplateEngine springTemplateEngine, StudentRepository studentRepository) {
+    public CreateStudentServlet(SpringTemplateEngine springTemplateEngine, StudentService studentService) {
         this.springTemplateEngine = springTemplateEngine;
-        this.studentRepository = studentRepository;
+        this.studentService = studentService;
     }
 
     @Override
@@ -39,7 +38,7 @@ public class CreateStudentServlet extends HttpServlet {
         String name = req.getParameter("name");
         String surname = req.getParameter("surname");
 
-        this.studentRepository.addStudent(new Student(username, password, name, surname));
+        this.studentService.save(username, password, name, surname);
         resp.sendRedirect("/AddStudent");
     }
 }
