@@ -16,11 +16,11 @@ public class CourseRepository {
 
     @PostConstruct
     public void init() {
-        coursesList.add(new Course(1L, "Algorithms & Data structures", "Algorithms & Data structures", new ArrayList<Student>()));
-        coursesList.add(new Course(2L, "Calculus 2", "Calculus 2", new ArrayList<Student>()));
-        coursesList.add(new Course(3L, "Probability & Statistics", "Probability & Statistics", new ArrayList<Student>()));
-        coursesList.add(new Course(4L, "Operating Systems", "Operating Systems", new ArrayList<Student>()));
-        coursesList.add(new Course(5L, "Computer Networks & Security", "Computer Networks & Security", new ArrayList<Student>()));
+        coursesList.add(new Course(1L, "Algorithms & Data structures", "Algorithms & Data structures", new ArrayList<>()));
+        coursesList.add(new Course(2L, "Calculus 2", "Calculus 2", new ArrayList<>()));
+        coursesList.add(new Course(3L, "Probability & Statistics", "Probability & Statistics", new ArrayList<>()));
+        coursesList.add(new Course(4L, "Operating Systems", "Operating Systems", new ArrayList<>()));
+        coursesList.add(new Course(5L, "Computer Networks & Security", "Computer Networks & Security", new ArrayList<>()));
     }
 
     public List<Course> findAllCourses() {
