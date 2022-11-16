@@ -11,8 +11,8 @@
     <groupId>mk.ukim.finki.wp</groupId>
     <artifactId>lab</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lab-1</name>
-    <description>lab-1</description>
+    <name>lab-2</name>
+    <description>lab-2</description>
     <properties>
         <java.version>11</java.version>
     </properties>
