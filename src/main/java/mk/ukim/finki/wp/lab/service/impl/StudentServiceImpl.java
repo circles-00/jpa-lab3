@@ -6,6 +6,7 @@ import mk.ukim.finki.wp.lab.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -29,5 +30,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student save(String username, String password, String name, String surname) {
         return this.studentRepository.addStudent(new Student(username, password, name, surname));
+    }
+
+    @Override
+    public List<Student> getFilteredStudents(List<Student> filterList) {
+        return this.studentRepository.findAllStudents().stream().filter(student -> filterList.stream().noneMatch(filterStudent -> filterStudent.getUsername().equals(student.getUsername()))).collect(Collectors.toList());
     }
 }
