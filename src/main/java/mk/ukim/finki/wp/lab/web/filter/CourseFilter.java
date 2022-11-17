@@ -18,12 +18,12 @@ public class CourseFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
         String path = new UrlPathHelper().getPathWithinApplication(req);
-        String courseId = (String) req.getSession().getAttribute("courseId");
+        String courseId = req.getSession().getAttribute("courseId") == null ? null : String.valueOf(req.getSession().getAttribute("courseId"));
 
+        String homepagePath = "/courses";
         log.info("Requested: " + req.getMethod() + " " + path);
-
-        if(courseId == null && !path.equals("/listCourses")) {
-            resp.sendRedirect("/listCourses");
+        if(courseId == null && !path.contains(homepagePath)) {
+            resp.sendRedirect(homepagePath);
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

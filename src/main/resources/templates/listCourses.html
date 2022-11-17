@@ -15,15 +15,30 @@
 </header>
 <main>
     <h2>Choose course:</h2>
-    <form method="post">
+    <form method="post" th:action="@{/courses}">
         <ul style="list-style: none">
             <li th:each="course: ${coursesList}">
                 <input type="radio" name="courseId" th:value="${course.getCourseId()}">
-                <th:block th:text="${course.getName()}"></th:block><br>
+                <th:block th:text="${course.getName()}"></th:block>
+                <button type="submit" name="action" th:value="edit- + ${course.getCourseId()}">Edit</button>
+                <button type="submit" th:onclick="'javascript:handleDeleteCourse(' + ${course.getCourseId()} + ')'">Delete</button>
             </li>
         </ul>
-        <button type="submit">Submit</button>
+        <button type="submit" name="action" value="submit">Submit</button>
     </form>
+    <form th:method="get" th:action="@{/courses/add-form}">
+        <button type="submit">Add new course</button>
+    </form>
+
+    <p style="color: red;"><th:block th:text="${error}"></th:block></p>
+
+    <script>
+        const handleDeleteCourse = async (id) => {
+            await fetch(`/courses/${id}`, {
+                method: 'DELETE'
+            })
+        }
+    </script>
 </main>
 </body>
 </html>

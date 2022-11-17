@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Create a New Course Page</title>
+</head>
+<body>
+<header>
+    <h1>Course Enrollment - Create a New Course </h1>
+</header>
+<section>
+    <form th:method="${method}" th:action="@{/courses/__${type}__}">
+        <input hidden="hidden" id="courseId" name="courseId" th:value="${courseId}"></input>
+        <label for="courseName">Course Name:</label><input id="courseName" type="text" name="courseName" th:value="${courseName}"><br>
+        <label for="courseDescription">Course Description:</label><input id="courseDescription" type="text" name="courseDescription" th:value="${courseDescription}"><br>
+        <label for="teacherId">Teacher:</label><select id="teacherId" name="teacherId">
+            <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}" th:selected="${teacher.getId == teacherId}">
+                <th:block th:text="${teacher.getName()}"></th:block>
+                <th:block th:text="${teacher.getSurname()}"></th:block>
+            </option>
+        </select> <br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p style="color: red;"><th:block th:text="${error}"></th:block></p>
+</section>
+</body>
+</html>
