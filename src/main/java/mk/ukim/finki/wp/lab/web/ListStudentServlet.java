@@ -45,6 +45,8 @@ public class ListStudentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().setAttribute("studentUsername", req.getParameter("studentUsername"));
+        req.getSession().setAttribute("grade", req.getParameter("grade"));
+        req.getSession().setAttribute("gradeDateTime", req.getParameter("gradeDateTime"));
 
         resp.sendRedirect("/StudentEnrollmentSummary");
     }

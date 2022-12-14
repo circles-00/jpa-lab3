@@ -1,4 +1,4 @@
-package mk.ukim.finki.wp.lab.repository;
+package mk.ukim.finki.wp.lab.repository.in_memory;
 
 import mk.ukim.finki.wp.lab.model.Student;
 import org.springframework.stereotype.Repository;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class StudentRepository {
+public class InMemoryStudentRepository {
     public static final List<Student> studentList = new ArrayList<>();
 
     @PostConstruct

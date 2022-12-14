@@ -1,7 +1,7 @@
 package mk.ukim.finki.wp.lab.service.impl;
 
 import mk.ukim.finki.wp.lab.model.Student;
-import mk.ukim.finki.wp.lab.repository.StudentRepository;
+import mk.ukim.finki.wp.lab.repository.jpa.StudentRepository;
 import mk.ukim.finki.wp.lab.service.StudentService;
 import org.springframework.stereotype.Service;
 
@@ -19,21 +19,21 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> listAll() {
-        return this.studentRepository.findAllStudents();
+        return this.studentRepository.findAll();
     }
 
     @Override
-    public List<Student> searchByNameOrSurname(String text) {
-        return this.studentRepository.findAllByNameOrSurname(text);
+    public List<Student> searchByNameOrSurname(String name, String surname) {
+        return this.studentRepository.findAllByNameOrSurname(name, surname);
     }
 
     @Override
     public Student save(String username, String password, String name, String surname) {
-        return this.studentRepository.addStudent(new Student(username, password, name, surname));
+        return this.studentRepository.save(new Student(username, password, name, surname));
     }
 
     @Override
     public List<Student> getFilteredStudents(List<Student> filterList) {
-        return this.studentRepository.findAllStudents().stream().filter(student -> filterList.stream().noneMatch(filterStudent -> filterStudent.getUsername().equals(student.getUsername()))).collect(Collectors.toList());
+        return this.studentRepository.findAll().stream().filter(student -> filterList.stream().noneMatch(filterStudent -> filterStudent.getUsername().equals(student.getUsername()))).collect(Collectors.toList());
     }
 }

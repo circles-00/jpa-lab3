@@ -1,4 +1,4 @@
-package mk.ukim.finki.wp.lab.repository;
+package mk.ukim.finki.wp.lab.repository.in_memory;
 
 import lombok.extern.slf4j.Slf4j;
 import mk.ukim.finki.wp.lab.model.Course;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 @Slf4j
-public class CourseRepository {
+public class InMemoryCourseRepository {
     public static final List<Course> coursesList = new ArrayList<>();
 
     @PostConstruct

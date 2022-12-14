@@ -11,7 +11,7 @@
 <section>
     <div><th:block th:text="${courseName}"></th:block></div>
     <ul th:each="student: ${studentsInCourse}">
-        <li><th:block th:text="${student.getName()}"></th:block> <th:block th:text="${student.getSurname()}"></th:block></li>
+        <li><th:block th:text="${student.getName()}"></th:block> <th:block th:text="${student.getSurname()}"> </th:block> <th:block th:text="${grade}"></th:block></li>
     </ul>
     <a href="/courses">Back</a>
 </section>
