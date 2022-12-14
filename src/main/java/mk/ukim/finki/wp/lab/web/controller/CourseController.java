@@ -29,14 +29,22 @@ public class CourseController {
     }
 
     @GetMapping
-    public String getCoursesPage(@RequestParam(required = false) String error, Model model) {
-
-        List<Course> coursesList = CommonUtils.sortCourses(this.courseService.listAll());
+    public String getCoursesPage(@RequestParam(required = false) String error, Model model, @RequestParam(required = false) String sortOrder) {
+        List<Course> coursesList = CommonUtils.sortCourses(this.courseService.listAll(), sortOrder != null ? sortOrder : "ascending");
+        String sortingOrder = CommonUtils.getNextSortOrder();
 
         model.addAttribute("coursesList", coursesList);
         model.addAttribute("error", error);
+        model.addAttribute("sortOrder", sortingOrder);
 
         return "listCourses";
+    }
+
+    @PostMapping("/sort")
+    public String sortCourses(RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute("sortOrder", CommonUtils.getNextSortOrder());
+
+        return "redirect:/courses";
     }
 
     @PostMapping

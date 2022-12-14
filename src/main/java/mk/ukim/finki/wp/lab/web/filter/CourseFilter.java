@@ -22,7 +22,7 @@ public class CourseFilter implements Filter {
 
         String homepagePath = "/courses";
         log.info("Requested: " + req.getMethod() + " " + path);
-        if(courseId == null && !path.contains(homepagePath)) {
+        if(courseId == null && !path.equals(homepagePath) && !path.equals("/courses/add-form") && !path.contains("/courses/edit-form") && !path.equals("/courses/add") && !req.getMethod().equals("DELETE") && !path.contains("/courses/sort") && !path.contains("/courses/edit")) {
             resp.sendRedirect(homepagePath);
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

@@ -32,6 +32,9 @@
 
     <p style="color: red;"><th:block th:text="${error}"></th:block></p>
 
+    <form method="post" th:action="@{/courses/sort}">
+        <button type="submit">Change sorting order of courses to <th:block th:text="${sortOrder}"></th:block></button>
+    </form>
     <script>
         const handleDeleteCourse = async (id) => {
             await fetch(`/courses/${id}`, {
