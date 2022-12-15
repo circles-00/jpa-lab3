@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "StudentEnrollmentSummary", urlPatterns = "/StudentEnrollmentSummary")
+@WebServlet(name = "StudentEnrollmentSummary", urlPatterns = "/StudentEnrollmentSummaryBak")
 @Slf4j
 public class StudentEnrollmentSummary extends HttpServlet {
 

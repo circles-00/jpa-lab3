@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListStudentServlet", urlPatterns = "/AddStudent")
+@WebServlet(name = "ListStudentServlet", urlPatterns = "/AddStudentBak")
 @Slf4j
 public class ListStudentServlet extends HttpServlet {
     private final SpringTemplateEngine springTemplateEngine;

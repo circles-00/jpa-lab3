@@ -93,6 +93,7 @@ public class CourseController {
 
 
     @DeleteMapping("/{id}")
+    @ResponseBody
     public String deleteCourse(@PathVariable Long id) {
         try {
             this.courseService.deleteCourse(id);

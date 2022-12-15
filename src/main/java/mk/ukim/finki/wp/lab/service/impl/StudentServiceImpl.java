@@ -36,4 +36,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getFilteredStudents(List<Student> filterList) {
         return this.studentRepository.findAll().stream().filter(student -> filterList.stream().noneMatch(filterStudent -> filterStudent.getUsername().equals(student.getUsername()))).collect(Collectors.toList());
     }
+
+    @Override
+    public Student getByUsername(String username) {
+        return this.studentRepository.findById(username).orElse(null);
+    }
 }
