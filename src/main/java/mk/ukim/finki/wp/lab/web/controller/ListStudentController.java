@@ -45,6 +45,14 @@ public class ListStudentController {
         return "listStudents";
     }
 
+    @GetMapping("/failed-students")
+    public String getFailedStudents(Model model) {
+        List<Grade> failedStudents = this.gradeRepository.findFailedStudents();
+
+        model.addAttribute("failedStudents", failedStudents);
+
+        return "failedStudents";
+    }
 
     @PostMapping
     public String doPost(@RequestParam String studentUsername,

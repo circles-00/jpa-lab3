@@ -13,11 +13,22 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Character grade;
+    private int grade;
     @ManyToOne
     private Student student;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Course course;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime timestamp;
+
+    public Grade(int grade, LocalDateTime timestamp, Student student, Course course) {
+        this.grade = grade;
+        this.timestamp = timestamp;
+        this.student = student;
+        this.course = course;
+    }
+
+    public Grade() {
+
+    }
 }

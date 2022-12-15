@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>WP lab - List of all failed students</title>
+
+</head>
+<body>
+<header>
+    <h1>List of all failed students:</h1>
+</header>
+<section>
+    <div><th:block th:text="${courseName}"></th:block></div>
+    <ul th:each="grade : ${failedStudents}">
+        <li>Course: <th:block th:text="${grade.getCourse().getName()}"></th:block>, Student: <th:block th:text="${grade.getStudent().getName()}"></th:block> <th:block th:text="${grade.getStudent().getSurname()}"></th:block>, <span th:style="${grade.getGrade() < 6 ? 'color: red;' : ''}">grade: <th:block th:text="${grade.getGrade()}"></th:block></span></li>
+    </ul>
+    <a href="/courses">Back</a>
+</section>
+
+</body>
+</html>

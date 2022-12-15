@@ -7,11 +7,16 @@
 <body>
 <header>
     <h1>Students in Course </h1>
+    <form th:action="@{/StudentEnrollmentSummary}">
+        <input type="datetime-local" name="fromDate" />
+        <input type="datetime-local" name="toDate" />
+        <button type="submit">Submit</button>
+    </form>
 </header>
 <section>
     <div><th:block th:text="${courseName}"></th:block></div>
-    <ul th:each="student: ${studentsInCourse}">
-        <li><th:block th:text="${student.getName()}"></th:block> <th:block th:text="${student.getSurname()}"> </th:block> <th:block th:text="${grade}"></th:block></li>
+    <ul th:each="student, itrStat : ${studentList}">
+        <li><th:block th:text="${student.getName()}"></th:block> <th:block th:text="${student.getSurname()}"></th:block>, <span th:style="${grades.get(itrStat.index).getGrade() < 6 ? 'color: red;' : ''}">grade: <th:block th:text="${grades.get(itrStat.index).getGrade()}"></th:block></span></li>
     </ul>
     <a href="/courses">Back</a>
 </section>
