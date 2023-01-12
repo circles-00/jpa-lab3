@@ -9,7 +9,7 @@ public interface StudentService {
 
     List<Student> searchByNameOrSurname(String name, String surname);
 
-    Student save(String username, String password, String name, String surname);
+    Student save(String username, String password, String name, String surname) throws Exception;
 
     List<Student> getFilteredStudents(List<Student> filterList);
 

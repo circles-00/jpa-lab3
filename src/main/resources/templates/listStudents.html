@@ -51,10 +51,12 @@
         <br>
     </form>
 
-    <form th:action="@{/CreateStudent}">
-        <button type="submit">Create New Student</button>
-        <br> <br>
-    </form>
+    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+        <form th:action="@{/CreateStudent}">
+            <button type="submit">Create New Student</button>
+            <br> <br>
+        </form>
+    </th:block>
 </section>
 <aside>
     <table>

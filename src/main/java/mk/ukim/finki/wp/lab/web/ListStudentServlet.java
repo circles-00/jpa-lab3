@@ -1,7 +1,6 @@
 package mk.ukim.finki.wp.lab.web;
 
 import lombok.extern.slf4j.Slf4j;
-import mk.ukim.finki.wp.lab.model.Course;
 import mk.ukim.finki.wp.lab.model.Student;
 import mk.ukim.finki.wp.lab.service.CourseService;
 import mk.ukim.finki.wp.lab.service.StudentService;

@@ -28,7 +28,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student save(String username, String password, String name, String surname) {
+    public Student save(String username, String password, String name, String surname) throws Exception {
+        Student studentExists = this.studentRepository.findByUsername(username);
+        if(studentExists != null) {
+            throw new Exception("Username is already taken!");
+        }
+
         return this.studentRepository.save(new Student(username, password, name, surname));
     }
 

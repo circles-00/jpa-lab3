@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TeacherService {
     List<Teacher> findAll();
+
+    void saveTeacher(Teacher teacher);
 }
